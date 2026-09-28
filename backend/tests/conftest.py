@@ -46,7 +46,9 @@ class FakeVectorStore:
     def list_document_ids(self) -> list[str]:
         return list(self._docs.keys())
 
-    def search(self, query: str, top_k: int = 4, document_ids: list[str] | None = None) -> list[dict]:
+    def search(
+        self, query: str, top_k: int = 4, document_ids: list[str] | None = None,
+    ) -> list[dict]:
         return []
 
 

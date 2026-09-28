@@ -1,5 +1,7 @@
-import pytest
 from unittest.mock import MagicMock
+
+import pytest
+
 from app.services.ingest import IngestService
 
 
@@ -33,12 +35,12 @@ def test_ingest_md_file(service, mock_repo):
 
 def test_ingest_pdf_file(service, mock_repo):
     # Create a minimal valid PDF
-    from PyPDF2 import PdfWriter
     import io
+
+    from PyPDF2 import PdfWriter
+
     writer = PdfWriter()
     writer.add_blank_page(width=72, height=72)
-    page = writer.pages[0]
-    # We'll test with a real PDF that has no text — should raise ValueError
     buf = io.BytesIO()
     writer.write(buf)
     pdf_bytes = buf.getvalue()

@@ -7,16 +7,12 @@ if TYPE_CHECKING:
     from app.repositories.vector_store import VectorStoreRepository
 
 
-PROMPT_TEMPLATE = """You are a helpful assistant that answers questions based on the provided documents.
-Use ONLY the information from the documents below to answer. If the answer is not
-in the documents, say "I could not find this information in the provided documents."
-
-Documents:
----
-{context}
----
-
-Question: {question}"""
+PROMPT_TEMPLATE = (
+    "You are a helpful assistant that answers questions based on the provided documents.\n"
+    "Use ONLY the information from the documents below to answer. If the answer is not\n"
+    'in the documents, say "I could not find this information in the provided documents."'
+    "\n\nDocuments:\n---\n{context}\n---\n\nQuestion: {question}"
+)
 
 
 def build_prompt(chunks: list[dict], question: str) -> str:

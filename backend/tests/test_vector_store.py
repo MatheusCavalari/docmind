@@ -1,5 +1,5 @@
-import tempfile
 import pytest
+
 from app.repositories.vector_store import VectorStoreRepository
 
 

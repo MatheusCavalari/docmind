@@ -1,8 +1,8 @@
 from app.models.schemas import (
-    ChatRequest,
-    ChatTokenEvent,
-    ChatSourcesEvent,
     ChatErrorEvent,
+    ChatRequest,
+    ChatSourcesEvent,
+    ChatTokenEvent,
     DocumentResponse,
     HealthResponse,
     SourceInfo,
@@ -10,7 +10,9 @@ from app.models.schemas import (
 
 
 def test_document_response_fields():
-    doc = DocumentResponse(id="abc-123", filename="report.pdf", chunks=42, created_at="2026-01-01T00:00:00Z")
+    doc = DocumentResponse(
+        id="abc-123", filename="report.pdf", chunks=42, created_at="2026-01-01T00:00:00Z",
+    )
     assert doc.id == "abc-123"
     assert doc.filename == "report.pdf"
     assert doc.chunks == 42

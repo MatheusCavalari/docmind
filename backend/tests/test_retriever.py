@@ -1,4 +1,5 @@
 from unittest.mock import MagicMock
+
 from app.services.retriever import RetrieverService, build_prompt
 
 

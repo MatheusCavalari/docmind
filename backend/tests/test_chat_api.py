@@ -1,4 +1,3 @@
-import json
 from unittest.mock import MagicMock, patch
 
 
@@ -19,7 +18,8 @@ def test_chat_returns_sse_stream(client):
         real_retriever._top_k = 4
 
         def fake_query(question, document_ids=None):
-            return iter(["Python ", "is ", "great."]), [{"document": "test.txt", "excerpt": "Python is a..."}]
+            sources = [{"document": "test.txt", "excerpt": "Python is a..."}]
+            return iter(["Python ", "is ", "great."]), sources
 
         mock_service = MagicMock()
         mock_service.query = fake_query

@@ -3,8 +3,8 @@ import uuid
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING
 
-from PyPDF2 import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from PyPDF2 import PdfReader
 
 from app.models.schemas import DocumentResponse
 
@@ -25,7 +25,8 @@ class IngestService:
     def ingest(self, file_content: bytes, filename: str) -> DocumentResponse:
         ext = self._get_extension(filename)
         if ext not in self.SUPPORTED_EXTENSIONS:
-            raise ValueError(f"Unsupported file type: {ext}. Supported: {', '.join(self.SUPPORTED_EXTENSIONS)}")
+            supported = ', '.join(self.SUPPORTED_EXTENSIONS)
+            raise ValueError(f"Unsupported file type: {ext}. Supported: {supported}")
 
         text = self._parse(file_content, ext)
         if not text.strip():
