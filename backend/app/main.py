@@ -68,6 +68,9 @@ def create_app(
     from app.api.documents import router as documents_router
     app.include_router(documents_router)
 
+    from app.api.chat import router as chat_router
+    app.include_router(chat_router)
+
     @app.get("/api/health", response_model=HealthResponse)
     async def health():
         return HealthResponse(
